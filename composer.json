@@ -1,0 +1,18 @@
+{
+    "name": "bleaul/php-bibli",
+    "autoload": {
+        "psr-4": {
+            "Bleaul\\PhpBibli\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "bleau lucas",
+            "email": "lulubleau39@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^6.3",
+        "phpunit/phpunit": "^10.4"
+    }
+}
