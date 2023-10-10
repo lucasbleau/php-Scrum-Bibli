@@ -2,7 +2,7 @@
     "name": "bleaul/php-bibli",
     "autoload": {
         "psr-4": {
-            "Bleaul\\PhpBibli\\": "src/"
+            "App\\": "src"
         }
     },
     "authors": [

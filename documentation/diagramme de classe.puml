@@ -1,0 +1,50 @@
+@startuml
+
+class Media {
+# titre : string
+# statut : bool
+# dateCreation : datetime
+# dateEmprunt : datetime
+}
+
+class Livre {
+# isbn : string
+# auteur : string
+# nombrePage : int
+}
+
+class BlueRay {
+# realisateur : string
+# duree : datetime
+# anneeSortie : string
+}
+
+class Magazine {
+- numeroPublication : int
+- datePublication : datetime
+}
+
+class Adherents {
+- numeroAdherent : int
+- nom : string
+- prenom : string
+- email : string
+- dateAdhesion : datetime
+- genererNumero()
+}
+
+class Emprunts {
+- dateEmprunt :  datetime
+- dateRetourEstimé : datetime
+- dateRetour : datetime
+}
+
+Livre --|> Media
+BlueRay --|> Media
+Magazine --|> Media
+Emprunts --> Media
+Emprunts --> Adherents
+
+
+
+@enduml
