@@ -1,11 +1,12 @@
 <?php
 
+namespace Entite;
+
 class Magazine extends Media
 {
-    protected int $id ;
-
-    protected int $numeroPublication ;
-    protected DateTime $datePublication ;
+    protected int $id;
+    protected int $numeroPublication;
+    protected DateTime $datePublication;
 
     public function __construct()
     {
@@ -42,7 +43,6 @@ class Magazine extends Media
     {
         $this->datePublication = $datePublication;
     }
-
 
 
 }

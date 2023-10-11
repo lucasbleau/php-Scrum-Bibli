@@ -1,9 +1,14 @@
 <?php
 
+namespace Entite ;
+
+use App\Adherents;
+use App\DateTime;
+use App\Media;
+
 class Emprunts
 {
-    protected int $id ;
-
+    private int $id ;
     private DateTime $dateEmprunt ;
     private DateTime $dateRetourEstime ;
     private DateTime $dateRetour ;
@@ -20,6 +25,19 @@ class Emprunts
     {
         return $this->dateEmprunt;
     }
+
+    public function verifierEmpruntEnCours()
+    {
+        if (isset($dateEmprunt))
+        {
+            return true ;
+        }
+        else
+        {
+            return false ;
+        }
+    }
+
 
     /**
      * @param DateTime $dateEmprunt

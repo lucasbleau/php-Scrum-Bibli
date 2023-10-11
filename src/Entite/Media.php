@@ -1,13 +1,13 @@
 <?php
 
+namespace Entite;
 abstract class Media
 {
-    protected int $id ;
-
-    protected string $titre ;
-    protected bool $statut ;
-    protected DateTime $dateCreation ;
-    protected DateTime $dateEmprunt ;
+    protected int $id;
+    protected string $titre;
+    protected bool $statut;
+    protected DateTime $dateCreation;
+    protected DateTime $dateEmprunt;
 
     public function __construct()
     {

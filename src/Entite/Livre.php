@@ -1,11 +1,14 @@
 <?php
 
+namespace Entite;
+
 class Livre extends Media
 {
-    protected int $id ;
-    protected string $isbn ;
-    protected string $auteur ;
-    protected int $nombrePage ;
+    protected int $id;
+
+    protected string $isbn;
+    protected string $auteur;
+    protected int $nombrePage;
 
     public function __construct()
     {
