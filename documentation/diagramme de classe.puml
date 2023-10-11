@@ -35,15 +35,15 @@ class Adherents {
 
 class Emprunts {
 - dateEmprunt :  datetime
-- dateRetourEstimé : datetime
+- dateRetourEstime : datetime
 - dateRetour : datetime
 }
 
 Livre --|> Media
 BlueRay --|> Media
 Magazine --|> Media
-Emprunts --> Media
-Emprunts --> Adherents
+Emprunts "0.1" --> "1.1" Media
+Emprunts "0.*" --> "1.1" Adherents
 
 
 @enduml
