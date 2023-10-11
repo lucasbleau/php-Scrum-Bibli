@@ -1,6 +1,6 @@
 @startuml
 
-class Media {
+abstract Media {
 # titre : string
 # statut : bool
 # dateCreation : datetime
@@ -20,8 +20,8 @@ class BlueRay {
 }
 
 class Magazine {
-- numeroPublication : int
-- datePublication : datetime
+# numeroPublication : int
+# datePublication : datetime
 }
 
 class Adherents {
@@ -44,7 +44,6 @@ BlueRay --|> Media
 Magazine --|> Media
 Emprunts --> Media
 Emprunts --> Adherents
-
 
 
 @enduml
