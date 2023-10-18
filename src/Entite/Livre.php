@@ -1,6 +1,6 @@
 <?php
 
-namespace Entite;
+namespace App\Entite;
 
 class Livre extends Media
 {
@@ -12,6 +12,7 @@ class Livre extends Media
 
     public function __construct()
     {
+
     }
 
     /**

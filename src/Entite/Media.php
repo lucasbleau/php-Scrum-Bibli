@@ -1,6 +1,6 @@
 <?php
 
-namespace Entite;
+namespace App\Entite;
 abstract class Media
 {
     protected int $id;

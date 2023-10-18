@@ -1,6 +1,6 @@
 <?php
 
-namespace Entite;
+namespace App\Entite;
 
 class Magazine extends Media
 {

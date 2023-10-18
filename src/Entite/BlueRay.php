@@ -1,7 +1,6 @@
 <?php
 
-namespace Entite;
-
+namespace App\Entite;
 class BlueRay extends Media
 {
     protected int $id;

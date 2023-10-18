@@ -1,56 +1,75 @@
 <?php
 
-namespace Entite ;
+namespace App\Entite;
 
-use App\Adherents;
-use App\DateTime;
-use App\Media;
 
 class Emprunts
 {
-    private int $id ;
-    private DateTime $dateEmprunt ;
-    private DateTime $dateRetourEstime ;
-    private DateTime $dateRetour ;
-    private Adherents $adherents ;
-    private Media $media ;
+    private int $id;
+    private \DateTime $dateEmprunt;
+    private \DateTime $dateRetourEstime;
+    private ?\DateTime $dateRetour;
+    private Adherents $adherents;
+    private Media $media;
+
     public function __construct()
     {
+        $this->dateRetour = null ;
+    }
+
+    public function verifierEmpruntEnCours(): bool
+    {
+        if ($this->dateRetour == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function verifierEmpruntDepasser(): bool
+    {
+        if (!$this->verifierEmpruntEnCours()) {
+            $dateRetourEstime = $this->dateRetourEstime;
+            $dateRetour = $this->dateRetour;
+            if ($dateRetour->diff($dateRetourEstime)->invert == 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
-     * @return DateTime
+     * @return int
      */
-    public function getDateEmprunt(): DateTime
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
+    public function getDateEmprunt(): \DateTime
     {
         return $this->dateEmprunt;
     }
 
-    public function verifierEmpruntEnCours()
-    {
-        if (isset($dateEmprunt))
-        {
-            return true ;
-        }
-        else
-        {
-            return false ;
-        }
-    }
-
-
     /**
      * @param DateTime $dateEmprunt
      */
-    public function setDateEmprunt(DateTime $dateEmprunt): void
+    public function setDateEmprunt(\DateTime $dateEmprunt): void
     {
         $this->dateEmprunt = $dateEmprunt;
     }
 
-    /**
-     * @return DateTime
-     */
-    public function getDateRetourEstime(): DateTime
+
+    public function getDateRetourEstime(): \DateTime
     {
         return $this->dateRetourEstime;
     }
@@ -58,7 +77,7 @@ class Emprunts
     /**
      * @param DateTime $dateRetourEstime
      */
-    public function setDateRetourEstime(DateTime $dateRetourEstime): void
+    public function setDateRetourEstime(\DateTime $dateRetourEstime): void
     {
         $this->dateRetourEstime = $dateRetourEstime;
     }
@@ -66,7 +85,7 @@ class Emprunts
     /**
      * @return DateTime
      */
-    public function getDateRetour(): DateTime
+    public function getDateRetour(): \DateTime
     {
         return $this->dateRetour;
     }
@@ -74,10 +93,41 @@ class Emprunts
     /**
      * @param DateTime $dateRetour
      */
-    public function setDateRetour(DateTime $dateRetour): void
+    public function setDateRetour(\DateTime $dateRetour): void
     {
         $this->dateRetour = $dateRetour;
     }
 
+    /**
+     * @return Adherents
+     */
+    public function getAdherents(): Adherents
+    {
+        return $this->adherents;
+    }
+
+    /**
+     * @param Adherents $adherents
+     */
+    public function setAdherents(Adherents $adherents): void
+    {
+        $this->adherents = $adherents;
+    }
+
+    /**
+     * @return Media
+     */
+    public function getMedia(): Media
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param Media $media
+     */
+    public function setMedia(Media $media): void
+    {
+        $this->media = $media;
+    }
 
 }
