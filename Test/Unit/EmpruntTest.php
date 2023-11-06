@@ -37,8 +37,9 @@ class EmpruntTest extends TestCase
        $emprunt = new Emprunts() ;
        $format = "d-m-Y" ;
        $emprunt->setDateEmprunt((new \DateTime())->modify("- 30 days"));
-       $emprunt->setDateRetourEstime((new \DateTime())->modify("- 10 days"));
+       $emprunt->setDateRetourEstime((new \DateTime())->modify("- 1 days"));
        $verifierEmpruntDepasse = $emprunt->verifierEmpruntDepasser();
+       var_dump($verifierEmpruntDepasse);
        $this->assertTrue($verifierEmpruntDepasse);
    }
 

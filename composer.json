@@ -18,6 +18,11 @@
     ],
     "require": {
         "symfony/var-dumper": "^6.3",
-        "phpunit/phpunit": "^10.4"
+        "phpunit/phpunit": "^10.4",
+        "doctrine/orm": "^2.11.0",
+        "doctrine/dbal": "^3.2",
+        "symfony/yaml": "^5.4",
+        "symfony/cache": "^5.4"
     }
+
 }

@@ -28,10 +28,10 @@ class Emprunts
 
     public function verifierEmpruntDepasser(): bool
     {
-        if (!$this->verifierEmpruntEnCours()) {
-            $dateRetourEstime = $this->dateRetourEstime;
-            $dateRetour = $this->dateRetour;
-            if ($dateRetour->diff($dateRetourEstime)->invert == 1) {
+        if ($this->verifierEmpruntEnCours()) {
+            $dateRetourEstime = new \DateTime();
+            $dateRetour = $this->dateRetourEstime;
+            if ($dateRetour->diff($dateRetourEstime)->invert == 0) {
                 return true;
             }
         }

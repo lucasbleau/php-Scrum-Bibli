@@ -1,9 +1,21 @@
 <?php
 
 namespace App\Entite;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Table;
+use http\QueryString;
+
+#[Entity]
+#[Table(name: 'adherent')]
+
 class Adherents
 {
+    #[Column(name: 'id_adherent',type: 'integer')]
     private int $id;
+
+    #[Column(name: 'numero_adherent',length: 10)]
     private int $numeroAdherent;
     private string $nom;
     private string $prenom;
