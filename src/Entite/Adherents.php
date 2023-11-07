@@ -4,30 +4,40 @@ namespace App\Entite;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
-use http\QueryString;
+
 
 #[Entity]
 #[Table(name: 'adherent')]
 
 class Adherents
 {
+    #[Id]
     #[Column(name: 'id_adherent',type: 'integer')]
+    #[GeneratedValue]
     private int $id;
 
     #[Column(name: 'numero_adherent',length: 10)]
-    private int $numeroAdherent;
-    private string $nom;
-    private string $prenom;
-    private string $email;
-    private DateTime $dateAdhesion;
+    private string $numeroAdherent;
 
-    /**
-     * @param int $numeroAdherent
-     */
-    public function __construct(int $numeroAdherent)
+    #[Column(name: 'nom_adherent',length: 100)]
+    private string $nom;
+
+    #[Column(name: 'prenom_adherent',length: 100)]
+    private string $prenom;
+    #[Column(name: 'email_adherent',length: 100)]
+    private string $email;
+    #[Column(name: 'date_adhesion_adherent',length: 100)]
+    private \DateTime $dateAdhesion;
+
+
+    public function __construct()
     {
     }
+
+
 
     /**
      * @return int
@@ -40,9 +50,9 @@ class Adherents
     /**
      * @param int $numeroAdherent
      */
-    public function setNumeroAdherent(int $numeroAdherent): void
+    public function setNumeroAdherent(): void
     {
-        $this->numeroAdherent = $numeroAdherent;
+        $this->numeroAdherent = "AD-" . random_int(100000,999999);
     }
 
     /**
@@ -104,11 +114,10 @@ class Adherents
     /**
      * @param DateTime $dateAdhesion
      */
-    public function setDateAdhesion(DateTime $dateAdhesion): void
+    public function setDateAdhesion(\DateTime $dateAdhesion): void
     {
         $this->dateAdhesion = $dateAdhesion;
     }
-
 
 }
 
