@@ -2,13 +2,13 @@
 
 require  'bootstrap.php' ;
 
-$adherent = new \App\Entite\Adherents();
+$adherent = new \App\Entite\Adherent();
 
-$adherent->setPrenom("lucas");
+$adherent->setPrenom("toto");
 $adherent->setNom("bleau");
 $adherent->setEmail("lucas.bleau@gmail.com");
 $adherent->setDateAdhesion(new \DateTime());
-$adherent->setNumeroAdherent();
+$adherent->setNumeroAdherent("3");
 
 $entityManager->persist($adherent);
 $entityManager->flush();

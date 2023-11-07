@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping\Table;
 #[Entity]
 #[Table(name: 'adherent')]
 
-class Adherents
+class Adherent
 {
     #[Id]
     #[Column(name: 'id_adherent',type: 'integer')]
@@ -37,8 +37,6 @@ class Adherents
     {
     }
 
-
-
     /**
      * @return int
      */
@@ -50,9 +48,9 @@ class Adherents
     /**
      * @param int $numeroAdherent
      */
-    public function setNumeroAdherent(): void
+    public function setNumeroAdherent(string $numeroAdherent): void
     {
-        $this->numeroAdherent = "AD-" . random_int(100000,999999);
+        $this->numeroAdherent = $numeroAdherent;
     }
 
     /**

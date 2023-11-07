@@ -3,13 +3,13 @@
 namespace App\Entite;
 
 
-class Emprunts
+class Emprunt
 {
     private int $id;
     private \DateTime $dateEmprunt;
     private \DateTime $dateRetourEstime;
     private ?\DateTime $dateRetour;
-    private Adherents $adherents;
+    private Adherent $adherent;
     private Media $media;
 
     public function __construct()
@@ -99,17 +99,17 @@ class Emprunts
     }
 
     /**
-     * @return Adherents
+     * @return Adherent
      */
-    public function getAdherents(): Adherents
+    public function getAdherents(): Adherent
     {
         return $this->adherents;
     }
 
     /**
-     * @param Adherents $adherents
+     * @param Adherent $adherents
      */
-    public function setAdherents(Adherents $adherents): void
+    public function setAdherents(Adherent $adherents): void
     {
         $this->adherents = $adherents;
     }
