@@ -4,7 +4,6 @@ namespace App\Entite;
 
 class Magazine extends Media
 {
-    protected int $id;
     protected int $numeroPublication;
     protected DateTime $datePublication;
 

@@ -4,8 +4,6 @@ namespace App\Entite;
 
 class Livre extends Media
 {
-    protected int $id;
-
     protected string $isbn;
     protected string $auteur;
     protected int $nombrePage;

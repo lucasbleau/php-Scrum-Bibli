@@ -27,8 +27,10 @@ class Adherent
 
     #[Column(name: 'prenom_adherent',length: 100)]
     private string $prenom;
+
     #[Column(name: 'email_adherent',length: 100)]
     private string $email;
+
     #[Column(name: 'date_adhesion_adherent',length: 100)]
     private \DateTime $dateAdhesion;
 

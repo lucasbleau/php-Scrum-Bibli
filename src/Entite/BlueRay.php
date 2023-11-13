@@ -3,7 +3,6 @@
 namespace App\Entite;
 class BlueRay extends Media
 {
-    protected int $id;
     protected string $realisateur;
     protected DateTime $duree;
     protected string $anneeSortie;

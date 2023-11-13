@@ -7,7 +7,9 @@ use App\Entite\Adherent;
 use App\Services\GenerateurNumeroAdherent;
 use Doctrine\ORM\EntityManagerInterface;
 use Dotenv\Validator;
+use PHPUnit\Logging\Exception;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use function PHPUnit\Framework\throwException;
 
 class CreerAdherent
 {
@@ -34,16 +36,28 @@ class CreerAdherent
         // Valider les données en entrées (de la requête)
 
         $erreurs = $this->validator->validate($requete) ;
+        if ($erreurs->count() > 0) {
+            throw new \Exception('Les données ne sont pas renseignées', 1) ;
+        }
 
         // Vérifier que l'email n'existe pas déjà
 
-
+        $adherent = $this->entityManager->getRepository(Adherent::class) ;
+        if ($adherent->findOneBy(['email' => $requete->email]) !== null)
+        {
+            throw new \Exception('Lemail existe déja', 2) ;
+        }
 
         // Générer un numéro d'adhérent au format AD-999999
 
         $numeroAdherent = $this->numeroAdherent->generer();
 
         // Vérifier que le numéro n'existe pas déjà
+
+        while ($adherent->findOneBy(['numeroAdherent' => $numeroAdherent]) !== null)
+        {
+            $numeroAdherent = $this->numeroAdherent->generer();
+        }
 
         // Créer l'adhérent
 

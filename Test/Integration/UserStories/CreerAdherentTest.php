@@ -44,7 +44,7 @@ class CreerAdherentTest extends TestCase
         // Création des dépendances
         $this->entityManager = new EntityManager($connection, $config);
         $this->generateur = new GenerateurNumeroAdherent();
-        $this->validator = Validation::createValidator();
+        $this->validator = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
 
         // Création du schema de la base de données
         $schemaTool = new SchemaTool($this->entityManager);
@@ -74,5 +74,48 @@ class CreerAdherentTest extends TestCase
         $this->assertNotNull($adherent);
         $this->assertEquals("john", $adherent->getPrenom());
 
+    }
+
+    #[test]
+    public function creerAdherent_ValeurFausses_Exception() {
+
+        // Arrange
+
+        $requete = new CreerAdherentRequete("", "", "") ;
+        $adherent = new CreerAdherent($this->entityManager, $this->generateur, $this->validator) ;
+
+        // Act
+
+        $this->expectException(\Exception::class);
+        $resultat = $adherent->execute($requete) ;
+
+    }
+
+    #[test]
+    public function creerAdherent_ValeurPrenomNonRemplie_Exception() {
+
+        // Arrange
+
+        $requete = new CreerAdherentRequete("", "doe", "john.doe@test.com") ;
+        $adherent = new CreerAdherent($this->entityManager, $this->generateur, $this->validator) ;
+
+        // Act
+
+        $this->expectException(\Exception::class);
+        $resultat = $adherent->execute($requete) ;
+    }
+
+    #[test]
+    public function creerAdherent_ValeurNomNonRemplie_Exception() {
+
+        // Arrange
+
+        $requete = new CreerAdherentRequete("john", "", "john.doe@test.com") ;
+        $adherent = new CreerAdherent($this->entityManager, $this->generateur, $this->validator) ;
+
+        // Act
+
+        $this->expectException(\Exception::class);
+        $resultat = $adherent->execute($requete) ;
     }
 }
