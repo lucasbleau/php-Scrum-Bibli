@@ -6,12 +6,7 @@ class GenerateurNumeroAdherent
 {
     public function generer(): string
     {
-        $numero = str_pad("AD-", 9, rand(000000, 999999));
-        return $numero;
+        return str_pad("AD-", 9, rand(000000, 999999));
     }
 
 }
-
-$a = new GenerateurNumeroAdherent();
-$b = $a->generer();
-echo $b ;

@@ -28,17 +28,17 @@ class Magazine extends Media
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getDatePublication(): DateTime
+    public function getDatePublication(): \DateTime
     {
         return $this->datePublication;
     }
 
     /**
-     * @param DateTime $datePublication
+     * @param \DateTime $datePublication
      */
-    public function setDatePublication(DateTime $datePublication): void
+    public function setDatePublication(\DateTime $datePublication): void
     {
         $this->datePublication = $datePublication;
     }

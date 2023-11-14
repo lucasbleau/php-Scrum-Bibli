@@ -54,9 +54,10 @@ class CreerAdherent
 
         // Vérifier que le numéro n'existe pas déjà
 
-        while ($adherent->findOneBy(['numeroAdherent' => $numeroAdherent]) !== null)
+        if ($adherent->findOneBy(['numeroAdherent' => $numeroAdherent]) <> null)
         {
-            $numeroAdherent = $this->numeroAdherent->generer();
+            var_dump($numeroAdherent) ;
+            throw new \Exception('Le numéro adhérant générer est déja utilisé', 3) ;
         }
 
         // Créer l'adhérent

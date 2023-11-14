@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.titre
+{
+    display: flex;
+    justify-content: center;
+    background-color: darkgrey;
+    padding: 1.5%;
+}
+
+.form
+{
+    padding: 2%;
+    background-color: lightgrey;
+}
+
+.retour
+{
+    position: fixed;
+    padding: 1.5%;
+    text-decoration: none;
+    color: black;
+}
+
+.retour:hover
+{
+    background-color: dimgrey;
+}
+
+.ligne-form
+{
+    padding: 0.5%;
+}
+
+.ligne-form input
+{
+    border: none;
+    border-bottom: black solid 1px;
+    background-color: lightgrey;
+}
+
+.message-form
+{
+    padding: 0.5%;
+    border: red solid 1px;
+    color: red;
+}
+
+.bouton-form
+{
+    padding: 0.5%;
+
+}

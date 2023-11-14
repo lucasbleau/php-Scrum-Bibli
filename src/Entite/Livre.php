@@ -2,10 +2,17 @@
 
 namespace App\Entite;
 
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+
+#[Entity]
 class Livre extends Media
 {
+    #[Column(name: "isbn", length: "20")]
     protected string $isbn;
+    #[Column(name: "auteur", length: "50")]
     protected string $auteur;
+    #[Column(name: "nombre_page", length: "5")]
     protected int $nombrePage;
 
     public function __construct()
@@ -60,5 +67,8 @@ class Livre extends Media
         $this->nombrePage = $nombrePage;
     }
 
-
+    public function setDureeEmprunt(): void
+    {
+        $this->dureeEmprunt = 21 ;
+    }
 }
