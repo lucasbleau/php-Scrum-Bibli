@@ -39,6 +39,13 @@ class CreerLivre
             throw new \Exception('L isbn existe déja', 2) ;
         }
 
+        // Vérifier que le nombre de page renseignée est supérieur à 0
+
+        if ($requete->nombrePage <= 0)
+        {
+            throw new \Exception('Le nombre de page est egal à 0') ;
+        }
+
         // Créer le livre
 
         $livre = new Livre() ;

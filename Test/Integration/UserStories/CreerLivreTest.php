@@ -74,5 +74,26 @@ class CreerLivreTest extends TestCase
         $this->assertEquals("lucas", $livre->getAuteur());
     }
 
+    #[test]
+    public function creerLivre_IsbnDejaUtilise_Exception()
+    {
+        $requete = new CreerLivreRequete("142536", "titre1", "lucas", "52", "12/01/2003");
+        $creerLivre = new CreerLivre($this->entityManager,$this->validator);
+
+        $resultat = $creerLivre->execute($requete);
+
+        $this->expectException(\Exception::class);
+        $resultat = $creerLivre->execute($requete);
+    }
+
+    #[test]
+    public function creerLivre_nombrePageSup0_Exception()
+    {
+        $requete = new CreerLivreRequete("142536", "titre1", "lucas", "0", "12/01/2003");
+        $creerLivre = new CreerLivre($this->entityManager,$this->validator);
+
+        $this->expectException(\Exception::class);
+        $resultat = $creerLivre->execute($requete);
+    }
 
 }

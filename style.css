@@ -45,7 +45,8 @@
 
 .message-form
 {
-    padding: 0.5%;
+    padding: 1%;
+    margin: 0.5%;
     border: red solid 1px;
     color: red;
 }
