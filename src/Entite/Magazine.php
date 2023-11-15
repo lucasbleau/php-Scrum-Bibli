@@ -2,10 +2,16 @@
 
 namespace App\Entite;
 
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+
+#[Entity]
 class Magazine extends Media
 {
+    #[Column(name: "numero_publication", length: "20")]
     protected int $numeroPublication;
-    protected DateTime $datePublication;
+    #[Column(name: "date_publication", length: "20")]
+    protected \DateTime $datePublication;
 
     public function __construct()
     {
@@ -27,21 +33,19 @@ class Magazine extends Media
         $this->numeroPublication = $numeroPublication;
     }
 
-    /**
-     * @return \DateTime
-     */
     public function getDatePublication(): \DateTime
     {
         return $this->datePublication;
     }
 
-    /**
-     * @param \DateTime $datePublication
-     */
-    public function setDatePublication(\DateTime $datePublication): void
+    public function setDatePublication(string $datePublication): void
     {
-        $this->datePublication = $datePublication;
+        $this->datePublication = \DateTime::createFromFormat('d/m/Y', $datePublication);
     }
 
+    public function setDureeEmprunt(): void
+    {
+        $this->dureeEmprunt = 15 ;
+    }
 
 }

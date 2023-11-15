@@ -1,8 +1,8 @@
 
 <?php
 
-use App\UserStories\CreerLivre\CreerLivre;
-use App\UserStories\CreerLivre\CreerLivreRequete;
+use App\UserStories\CreerMagazine\CreerMagazine;
+use App\UserStories\CreerMagazine\CreerMagazineRequete;
 use Symfony\Component\Validator\Validation;
 
 require "bootstrap.php";
@@ -10,12 +10,12 @@ require "vendor/autoload.php" ;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    $requete = new CreerLivreRequete($_POST['isbn'], $_POST['titre'], $_POST['auteur'], $_POST['nombrePage']);
+    $requete = new CreerMagazineRequete($_POST['numeroPublication'], $_POST['titre'], $_POST['datePublication']);
     $validateur = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
-    $creerLivre = new CreerLivre($entityManager, $validateur) ;
+    $creerMagazine = new CreerMagazine($entityManager, $validateur) ;
 
     try {
-        $creerLivre->execute($requete);
+        $creerMagazine->execute($requete);
     } catch (\Exception $e) {
         $message = $e->getMessage();
     }
@@ -38,13 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 <a href="index.php" class="retour">Retour</a>
 
-<p class="titre">Creer un Livre : </p>
+<p class="titre">Creer un Magazine : </p>
 
 <form method="post" class="form">
 
     <div class="ligne-form">
-        <label for="isbn">Entrer un ISBN : </label>
-        <input type="text" name="isbn">
+        <label for="numeroPublication">Entrer un numero de publication : </label>
+        <input type="text" name="numeroPublication">
     </div>
 
     <div class="ligne-form">
@@ -53,18 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     </div>
 
     <div class="ligne-form">
-        <label for="auteur">Entrer un auteur : </label>
-        <input type="text" name="auteur">
-    </div>
-
-    <div class="ligne-form">
-        <label for="nombrePage">Entrer un nombre de page : </label>
-        <input type="text" name="nombrePage">
-    </div>
-
-    <div class="ligne-form">
-        <label for="dateCreation">Entrer un date de Création du livre : </label>
-        <input type="text" name="dateCreation">
+        <label for="datePublicaion">Entrer un date de publication du magazine : </label>
+        <input type="text" name="datePublication">
     </div>
 
     <?php

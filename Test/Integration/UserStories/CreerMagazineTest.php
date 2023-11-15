@@ -2,9 +2,10 @@
 
 namespace Test\Integration\UserStories;
 
-use App\Entite\Livre;
+use App\Entite\Magazine;
 use App\UserStories\CreerLivre\CreerLivre;
-use App\UserStories\CreerLivre\CreerLivreRequete;
+use App\UserStories\CreerMagazine\CreerMagazine;
+use App\UserStories\CreerMagazine\CreerMagazineRequete;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManager;
@@ -19,11 +20,10 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class CreerLivreTest extends TestCase
+class CreerMagazineTest extends TestCase
 {
     protected EntityManagerInterface $entityManager;
     protected ValidatorInterface $validator;
-
 
     /**
      * @throws MissingMappingDriverImplementation
@@ -60,39 +60,27 @@ class CreerLivreTest extends TestCase
      * @throws NotSupported
      */
     #[test]
-    public function creerLivre_ValeursCorrects_True()
+    public function creerMagazine_ValeursCorrects_True()
     {
-        $requete = new CreerLivreRequete("142536", "titre1", "lucas", "52", "12/01/2003");
-        $creerLivre = new CreerLivre($this->entityManager,$this->validator);
+        $requete = new CreerMagazineRequete("142536", "titre1", "12/12/2002");
+        $creerMagazine = new CreerMagazine($this->entityManager,$this->validator);
 
-        $resultat = $creerLivre->execute($requete);
+        $resultat = $creerMagazine->execute($requete);
 
-        $repository = $this->entityManager->getRepository(Livre::class);
-        $livre = $repository->findOneBy(['isbn' => "142536"]);
-        $this->assertNotNull($livre);
-        $this->assertEquals("lucas", $livre->getAuteur());
+        $repository = $this->entityManager->getRepository(Magazine::class);
+        $magazine = $repository->findOneBy(['numeroPublication' => "142536"]);
+        $this->assertNotNull($magazine);
+        $this->assertEquals("142536", $magazine->getNumeroPublication());
     }
 
     #[test]
-    public function creerLivre_IsbnDejaUtilise_Exception()
+    public function creerMagazine_ValeursNonRentre_Exception()
     {
-        $requete = new CreerLivreRequete("142536", "titre1", "lucas", "52", "12/01/2003");
-        $creerLivre = new CreerLivre($this->entityManager,$this->validator);
-
-        $resultat = $creerLivre->execute($requete);
+        $requete = new CreerMagazineRequete("", "titre1", "12/12/2002");
+        $creerMagazine = new CreerMagazine($this->entityManager,$this->validator);
 
         $this->expectException(\Exception::class);
-        $resultat = $creerLivre->execute($requete);
+        $resultat = $creerMagazine->execute($requete);
+
     }
-
-    #[test]
-    public function creerLivre_nombrePageSup0_Exception()
-    {
-        $requete = new CreerLivreRequete("142536", "titre1", "lucas", "0", "12/01/2003");
-        $creerLivre = new CreerLivre($this->entityManager,$this->validator);
-
-        $this->expectException(\Exception::class);
-        $resultat = $creerLivre->execute($requete);
-    }
-
 }

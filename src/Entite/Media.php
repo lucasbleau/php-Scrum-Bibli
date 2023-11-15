@@ -75,17 +75,11 @@ abstract class Media
         return $this->dateCreation;
     }
 
-    /**
-     * @param string $dateCreation
-     */
-    public function setDateCreation(string $dateCreation): void
+    public function setDateCreation(): void
     {
-        $this->dateCreation = \DateTime::createFromFormat('d/m/Y', $dateCreation);
+        $this->dateCreation = new \DateTime();
     }
 
-    /**
-     * @return \DateTime
-     */
     public function getDateEmprunt(): \DateTime
     {
         return $this->dateEmprunt;

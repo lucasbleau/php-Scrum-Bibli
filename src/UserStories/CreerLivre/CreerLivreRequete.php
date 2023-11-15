@@ -11,7 +11,7 @@ class CreerLivreRequete
     )]
     public string $isbn;
     #[Assert\NotBlank(
-        message: "Le titre du livre est obligatoire"
+        message: "Le titre du Magazine est obligatoire"
     )]
     public string $titre;
     #[Assert\NotBlank(
@@ -23,24 +23,19 @@ class CreerLivreRequete
         message: "Le nombre de pages est obligatoire"
     )]
     public string $nombrePage;
-    #[Assert\NotBlank(
-        message: "La date de création est obligatoire"
-    )]
-    public string $dateCreation;
 
     /**
      * @param string $isbn
      * @param string $titre
      * @param string $auteur
      * @param string $nombrePage
-     * @param string $dateCreation
      */
-    public function __construct(string $isbn, string $titre, string $auteur, string $nombrePage, string $dateCreation)
+    public function __construct(string $isbn, string $titre, string $auteur, string $nombrePage)
     {
         $this->isbn = $isbn;
         $this->titre = $titre;
         $this->auteur = $auteur;
         $this->nombrePage = $nombrePage;
-        $this->dateCreation = $dateCreation;
+
     }
 }

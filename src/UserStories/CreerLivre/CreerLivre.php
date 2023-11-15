@@ -53,7 +53,7 @@ class CreerLivre
         $livre->setTitre($requete->titre);
         $livre->setAuteur($requete->auteur);
         $livre->setNombrePage($requete->nombrePage);
-        $livre->setDateCreation($requete->dateCreation);
+        $livre->setDateCreation();
         $livre->setDureeEmprunt();
         $livre->setStatut("Nouveau");
 
