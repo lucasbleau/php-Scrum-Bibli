@@ -36,25 +36,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 </head>
 <body>
 
-<a href="index.php" class="retour">Retour</a>
-
-<p class="titre">Creer un Magazine : </p>
+<div>
+    <a href="index.php" class="retour">Retour</a>
+    <p class="titre">Creer un Magazine : </p>
+</div>
 
 <form method="post" class="form">
 
     <div class="ligne-form">
-        <label for="numeroPublication">Entrer un numero de publication : </label>
-        <input type="text" name="numeroPublication">
+        <label for="numeroPublication">Numero de publication : </label>
+        <input type="text" name="numeroPublication"
+            <?php
+            if (isset($_POST['numeroPublication'])) {
+                ?> value="<?= $_POST['numeroPublication'] ?>"
+            <?php } ?> >
     </div>
 
     <div class="ligne-form">
-        <label for="titre">Entrer un titre : </label>
-        <input type="text" name="titre">
+        <label for="titre">Titre : </label>
+        <input type="text" name="titre"
+            <?php
+            if (isset($_POST['titre'])) {
+                ?> value="<?= $_POST['titre'] ?>"
+            <?php } ?> >
     </div>
 
     <div class="ligne-form">
-        <label for="datePublicaion">Entrer un date de publication du magazine : </label>
-        <input type="text" name="datePublication">
+        <label for="datePublication">Date de publication: </label>
+        <input type="text" name="datePublication"
+            <?php
+            if (isset($_POST['datePublication'])) {
+                ?> value="<?= $_POST['datePublication'] ?>"
+            <?php } ?> >
     </div>
 
     <?php

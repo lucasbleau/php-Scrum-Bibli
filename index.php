@@ -12,16 +12,17 @@
 
 <p class="titre">Création</p>
 
-    <div>
+<div class="liste-menu">
+    <div class="liste">
         <a href="creerAdherentPage.php">Créer un Adhérent</a>
     </div>
-    <div>
+    <div class="liste">
         <a href="creerLivrePage.php">Créer un Livre</a>
     </div>
-    <div>
+    <div class="liste">
         <a href="creerMagazinePage.php">Créer un Magazine</a>
     </div>
-
+</div>
 
 </body>
 </html>

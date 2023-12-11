@@ -35,25 +35,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 </head>
 <body>
 
-<a href="index.php" class="retour">Retour</a>
-
-<p class="titre">Creer un Adherent : </p>
+<div>
+    <a href="index.php" class="retour">Retour</a>
+    <p class="titre">Creer un Adherent : </p>
+</div>
 
 <form method="post" class="form">
 
     <div class="ligne-form">
-        <label for="prenom">Entrer un Prenom : </label>
-        <input type="text" name="prenom">
+        <label for="prenom">Prenom : </label>
+        <input type="text" name="prenom"
+            <?php
+            if (isset($_POST['prenom'])) {
+                ?> value="<?= $_POST['prenom'] ?>"
+            <?php } ?> >
     </div>
 
     <div class="ligne-form">
-        <label for="nom">Entrer un Nom : </label>
-        <input type="text" name="nom">
+        <label for="nom">Nom : </label>
+        <input type="text" name="nom" id="nom"
+               <?php
+               if (isset($_POST['nom'])) {
+                   ?> value="<?= $_POST['nom'] ?>"
+               <?php } ?> >
     </div>
 
     <div class="ligne-form">
-        <label for="email">Entrer un Email : </label>
-        <input type="text" name="email">
+        <label for="email">Email : </label>
+        <input type="text" name="email"
+            <?php
+            if (isset($_POST['email'])) {
+                ?> value="<?= $_POST['email'] ?>"
+            <?php } ?> >
     </div>
 
 

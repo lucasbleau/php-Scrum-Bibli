@@ -13,7 +13,6 @@ class CreerAdherentRequete
         message: "Le nom est obligatoire"
     )]
     public string $nom;
-
     #[Assert\NotBlank(
         message: "L'email est obligatoire"
     )]

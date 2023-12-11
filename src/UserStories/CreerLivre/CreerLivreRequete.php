@@ -11,7 +11,7 @@ class CreerLivreRequete
     )]
     public string $isbn;
     #[Assert\NotBlank(
-        message: "Le titre du Magazine est obligatoire"
+        message: "Le titre du Livre est obligatoire"
     )]
     public string $titre;
     #[Assert\NotBlank(
@@ -23,6 +23,7 @@ class CreerLivreRequete
         message: "Le nombre de pages est obligatoire"
     )]
     public string $nombrePage;
+
 
     /**
      * @param string $isbn

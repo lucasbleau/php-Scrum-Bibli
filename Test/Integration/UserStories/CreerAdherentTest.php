@@ -118,4 +118,17 @@ class CreerAdherentTest extends TestCase
         $this->expectException(\Exception::class);
         $resultat = $adherent->execute($requete) ;
     }
+    #[test]
+    public function creerAdherent_ValeurEmailNonRemplie_Exception() {
+
+        // Arrange
+
+        $requete = new CreerAdherentRequete("john", "doe", "") ;
+        $adherent = new CreerAdherent($this->entityManager, $this->generateur, $this->validator) ;
+
+        // Act
+
+        $this->expectException(\Exception::class);
+        $resultat = $adherent->execute($requete) ;
+    }
 }

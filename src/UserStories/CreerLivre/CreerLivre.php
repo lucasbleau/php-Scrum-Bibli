@@ -3,6 +3,7 @@
 namespace App\UserStories\CreerLivre;
 
 use App\Entite\Livre;
+use App\Entite\StatutMedia;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -27,8 +28,12 @@ class CreerLivre
         // Valider les données en entrées (de la requête)
 
         $erreurs = $this->validator->validate($requete) ;
-        if ($erreurs->count() > 0) {
-            throw new \Exception('Les données ne sont pas renseignées', 1) ;
+        if ($erreurs->count() <> 0) {
+            $messageErreur = $erreurs->get(0)->getMessage();
+                for ($i = 1 ; $i < $erreurs->count() ; $i++) {
+                    $messageErreur .= " et " .($erreurs->get($i))->getMessage();
+                }
+                throw new \Exception($messageErreur);
         }
 
         // Vérifier que l'isbn n'existe pas déjà
@@ -55,7 +60,7 @@ class CreerLivre
         $livre->setNombrePage($requete->nombrePage);
         $livre->setDateCreation();
         $livre->setDureeEmprunt();
-        $livre->setStatut("Nouveau");
+        $livre->setStatut(StatutMedia::NEW);
 
         // Enregistrer l'adhérent en base de données
 

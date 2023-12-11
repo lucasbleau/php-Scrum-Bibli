@@ -36,8 +36,12 @@ class CreerAdherent
         // Valider les données en entrées (de la requête)
 
         $erreurs = $this->validator->validate($requete) ;
-        if ($erreurs->count() > 0) {
-            throw new \Exception('Les données ne sont pas renseignées', 1) ;
+        if ($erreurs->count() <> 0) {
+            $messageErreur = $erreurs->get(0)->getMessage();
+            for ($i = 1 ; $i < $erreurs->count() ; $i++) {
+                $messageErreur .= " et " .($erreurs->get($i))->getMessage();
+            }
+            throw new \Exception($messageErreur);
         }
 
         // Vérifier que l'email n'existe pas déjà
