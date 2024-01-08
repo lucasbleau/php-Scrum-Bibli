@@ -85,6 +85,12 @@
     color: red;
 }
 
+.message-just-form
+{
+    color: darkgreen;
+    padding-top: 10px;
+}
+
 .bouton-form
 {
     padding: 1.5%;

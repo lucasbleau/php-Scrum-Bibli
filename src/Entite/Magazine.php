@@ -48,4 +48,9 @@ class Magazine extends Media
         $this->dureeEmprunt = 15 ;
     }
 
+    public function getType()
+    {
+        return "magazine";
+    }
+
 }

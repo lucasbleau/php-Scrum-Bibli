@@ -1,10 +1,18 @@
 <?php
 
 namespace App\Entite;
+
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+
+#[Entity]
 class BlueRay extends Media
 {
+    #[Column(name: "realisateur", length: 30)]
     protected string $realisateur;
-    protected DateTime $duree;
+    #[Column(name: "duree", type: 'float')]
+    protected \DateTime $duree;
+    #[Column(name: "annee_sortie", length: 50)]
     protected string $anneeSortie;
 
 
@@ -60,5 +68,9 @@ class BlueRay extends Media
         $this->anneeSortie = $anneeSortie;
     }
 
+    public function getType()
+    {
+        return "blueray";
+    }
 
 }

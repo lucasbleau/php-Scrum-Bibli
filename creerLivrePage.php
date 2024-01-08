@@ -82,16 +82,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     </div>
 
     <?php
-
-    if (isset($message))
-    {
-        ?>
-        <div class="message-form">
-            <p> <?= $message ?> </p>
-        </div>
-        <?php
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if (isset($message))
+        {
+            ?>
+            <div class="message-form">
+                <p> <?= $message ?> </p>
+            </div>
+            <?php
+        } else {
+            ?>
+            <div class="message-just-form">
+                <p> Livre créé avec succès </p>
+            </div>
+            <?php
+        }
     }
-
     ?>
 
     <div class="bouton-form">

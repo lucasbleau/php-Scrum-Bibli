@@ -35,6 +35,8 @@ abstract class Media
     {
     }
 
+    abstract public function getType();
+
     /**
      * @return string
      */
@@ -49,6 +51,14 @@ abstract class Media
     public function setTitre(string $titre): void
     {
         $this->titre = $titre;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     /**
@@ -70,9 +80,9 @@ abstract class Media
     /**
      * @return \DateTime
      */
-    public function getDateCreation(): \DateTime
+    public function getDateCreation(): string
     {
-        return $this->dateCreation;
+        return $this->dateCreation->format("d/m/Y");
     }
 
     public function setDateCreation(): void
