@@ -5,6 +5,7 @@ namespace Test\Unit ;
 use App\Entite\Adherent;
 use App\Entite\Emprunt;
 use App\Entite\Livre;
+use App\Entite\Media;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -35,6 +36,8 @@ class EmpruntTest extends TestCase
    public function verifierEmpruntDepasser_DateDepasse_True()
    {
        $emprunt = new Emprunt() ;
+//       $media = new Media();
+//       $emprunt->
        $format = "d-m-Y" ;
        $emprunt->setDateEmprunt((new \DateTime())->modify("- 30 days"));
        $emprunt->setDateRetourEstime((new \DateTime())->modify("- 1 days"));

@@ -44,7 +44,7 @@ class EmprunterMedia {
         }
 
         // Vérifier que le media est disponible
-        if (($media->findOneBy(["id" => $requete->id]))->getStatus() != StatutMedia::DISPO) {
+        if (($media->findOneBy(["id" => $requete->id]))->getStatut() != StatutMedia::DISPO) {
             throw new \Exception("Le media n'est pas disponible");
         }
 
@@ -62,6 +62,7 @@ class EmprunterMedia {
         // Recherche le Media
         $repository = $this->entityManager->getRepository(Media::class);
         $mediaRepository = $repository->findOneBy(["id" => $requete->id]);
+        $mediaRepository->setStatut(StatutMedia::EMPRUNTE);
 
         // Recherche l'adherent
         $repository = $this->entityManager->getRepository(Adherent::class);

@@ -105,6 +105,16 @@ abstract class Media
 
     public function setDureeEmprunt() : void
     {
+
     }
+
+    /**
+     * @return int
+     */
+    public function getDureeEmprunt(): int
+    {
+        return $this->dureeEmprunt;
+    }
+
 
 }

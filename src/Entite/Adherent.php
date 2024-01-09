@@ -104,9 +104,9 @@ class Adherent
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getDateAdhesion(): DateTime
+    public function getDateAdhesion(): \DateTime
     {
         return $this->dateAdhesion;
     }
