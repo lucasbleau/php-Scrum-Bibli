@@ -17,7 +17,7 @@ $app = new \Silly\Application();
 $app->command('EmprunterMedia', function (SymfonyStyle $io ) {
     require "bootstrap.php";
     $validateur = Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator();
-    $io->title("Création d'un livre");
+    $io->title("Emprunter un media");
     $id = $io->ask("Veuillez saisir l'id du média","");
     $numAdherent = $io->ask("Veuillez saisir le numéro d'adhérent","");
 

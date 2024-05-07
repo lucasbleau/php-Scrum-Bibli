@@ -40,7 +40,7 @@ class RendreDisponibleMedia{
 
         //Vérfier que le média a le statut nouveau
         if(($repository->findOneBy(["id" => $requete->id]))->getStatut() != StatutMedia::NEW){
-            throw new Exception("Ce média n'est pas nouveau (status).");
+            throw new Exception("Ce média n'est pas 'nouveau' (statut).");
         }
 
         $media = $repository->findOneBy(["id" => $requete->id]);
